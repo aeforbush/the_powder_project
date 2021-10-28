@@ -12,11 +12,7 @@ Review.init({
         autoIncrement: true,
         
     },
-    title: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    reviewText: {
+    review_text: {
         type: DataTypes.TEXT,
         allowNull: false
     },
