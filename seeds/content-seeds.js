@@ -22,6 +22,6 @@ const contentData = [
   },
 ];
 
-const seedContent = () => Post.bulkCreate(contentData);
+const seedContent = () => Content.bulkCreate(contentData);
 
 module.exports = seedContent;

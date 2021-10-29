@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 
-const sequalize = require("../config/connection");
+const sequelize = require("../config/connection");
 
 class Content extends Model {}
 
@@ -26,7 +26,8 @@ Content.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "user",
+    modelName: "content",
   }
 );
 module.exports = Content;
+
