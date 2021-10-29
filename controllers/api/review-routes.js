@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     Review.create({
         // will want to change to review_text once it's also changed in review.js
-        review_text: req.body.reviewtext,
+        review_text: req.body.review_text,
         user_id: req.body.user_id,
         content_id: req.body.content_id
     })
