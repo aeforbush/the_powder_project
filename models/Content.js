@@ -30,4 +30,3 @@ Content.init(
   }
 );
 module.exports = Content;
-p
