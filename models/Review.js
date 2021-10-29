@@ -41,3 +41,6 @@ Review.init(
     modelName: "user",
   }
 );
+
+module.exports = Review;
+

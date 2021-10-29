@@ -29,3 +29,5 @@ Content.init(
     modelName: "user",
   }
 );
+module.exports = Content;
+p
