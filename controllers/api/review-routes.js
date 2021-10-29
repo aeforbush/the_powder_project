@@ -12,7 +12,7 @@ router.post('/', (req, res) => {
         user_id: req.body.user_id,
         content_id: req.body.content_id
     })
-    .then(dbReviewData => res.json(dbReviewData))
+    .then(the_powder_project_db => res.json(the_powder_project_db))
     .catch(err => {
         console.log(err);
         res.status(400).json(err);
