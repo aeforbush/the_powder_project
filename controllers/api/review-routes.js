@@ -1,7 +1,16 @@
 const router = require("express").Router();
 const { Review } = require("../../models");
 
-router.get("/", (req, res) => {});
+router.get("/", (req, res) => {
+  Review.findAll({
+    attributes: ["id", "review_text", "user_id", "content_id"],
+  })
+    .then((the_powder_project_db) => res.json(the_powder_project_db))
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
+});
 
 router.post("/", (req, res) => {
   Review.create({
