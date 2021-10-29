@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 // when extending a class from the Sequelize model class, that new class(model) inherits methods for creating, reading, updating and deleting data from the db
 class User extends Model {}
 
-// define table columns and configurations and init() provides context as to how the inherited methods work 
+// define table columns and configurations and init() provides context as to how the inherited methods work
 User.init(
   // define columns (there are 4 of them)
   {
@@ -49,7 +49,7 @@ User.init(
         return updatedUserData;
       },
     },
-  
+
     // Table configs options go here
     // pass in our imported sequelize connection (the direct connection to our database)
     sequelize,
@@ -62,7 +62,6 @@ User.init(
     // make it so our model name stays lowercase in the database
     modelName: "user",
   }
-
 );
 
 module.exports = User;
