@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { Content, User, Review } = require("../../models");
-const sequelize = require("../../config/connection");
 
 const chalk = require("chalk");
 const withAuth = require("../../utils/auth");
@@ -17,7 +16,6 @@ router.get("/", (req, res) => {
           "review_text",
           "user_id",
           "content_id",
-          "created_at",
         ],
         include: {
           model: User,
@@ -41,7 +39,7 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "title", "content", "created_at"],
+    attributes: ["id", "title", "content"],
     include: [
       {
         model: Review,
@@ -49,8 +47,7 @@ router.get("/:id", (req, res) => {
           "id",
           "review_text",
           "user_id",
-          "content_id",
-          "created_at",
+          "content_id",  
         ],
         include: {
           model: User,
@@ -66,6 +63,7 @@ router.get("/:id", (req, res) => {
           .json({ message: "No content block found with this id" });
         return;
       }
+      res.json(dbContentData);
     })
     .catch((err) => {
       console.log(chalk.greenBright(err));
@@ -80,7 +78,7 @@ router.post("/", withAuth, (req, res) => {
   Content.create({
     title: req.body.title,
     content: req.body.content,
-    user_id: req.session.user_id,
+    
   })
     .then((dbContentData) => {
       res.json(dbContentData);
