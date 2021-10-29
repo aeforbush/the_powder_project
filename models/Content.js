@@ -21,3 +21,5 @@ Content.init({
         allowNull: false
     }
 })
+
+module.exports = Content;
