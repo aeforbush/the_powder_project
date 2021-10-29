@@ -17,6 +17,15 @@ router.post("/", (req, res) => {
     });
 });
 
-router.delete("/:id", (req, res) => {});
+router.delete("/:id", (req, res) => {
+  Review.destroy({
+    where : {id:req.params.id}
+  })
+  .then((the_powder_project_db) => res.json(the_powder_project_db))
+  .catch((err) => {
+    console.log(err);
+    res.status(400).json(err);
+  });
+});
 
 module.exports = router;
