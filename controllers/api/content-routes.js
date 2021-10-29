@@ -80,7 +80,6 @@ router.post("/", withAuth, (req, res) => {
   Content.create({
     title: req.body.title,
     content: req.body.content,
-    user_id: req.session.user_id,
   })
     .then((dbContentData) => {
       res.json(dbContentData);
