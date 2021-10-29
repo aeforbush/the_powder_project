@@ -32,7 +32,6 @@ Review.init({
             key:'id'
         }
     }
-    
-}
+})
 
-)
+module.exports = Review;
