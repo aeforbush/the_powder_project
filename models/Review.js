@@ -32,4 +32,7 @@ Review.init({
             key:'id'
         }
     }
-})
+    
+}
+
+)
