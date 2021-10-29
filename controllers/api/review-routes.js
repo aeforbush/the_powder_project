@@ -12,6 +12,18 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/id", (req, res) => {
+  Review.findOne({
+    where: {id:req.params.id},
+    attributes: ["id", "review_text", "user_id", "content_id"],
+  })
+    .then((the_powder_project_db) => res.json(the_powder_project_db))
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
+});
+
 router.post("/", (req, res) => {
   Review.create({
     // will want to change to review_text once it's also changed in review.js

@@ -78,7 +78,6 @@ router.post("/", withAuth, (req, res) => {
   Content.create({
     title: req.body.title,
     content: req.body.content,
-    
   })
     .then((dbContentData) => {
       res.json(dbContentData);
