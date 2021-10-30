@@ -14,7 +14,9 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
   Review.findOne({
-    where: { id: req.params.id },
+    where: {
+      id: req.params.id,
+    },
     attributes: ["id", "review_text", "user_id", "content_id"],
   })
     .then((the_powder_project_db) => res.json(the_powder_project_db))
@@ -40,7 +42,7 @@ router.post("/", (req, res) => {
 
 router.delete("/:id", (req, res) => {
   Review.destroy({
-    where: { id: req.params.id }
+    where: { id: req.params.id },
   })
     .then((the_powder_project_db) => res.json(the_powder_project_db))
     .catch((err) => {
