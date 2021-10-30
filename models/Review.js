@@ -28,14 +28,14 @@ Review.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "content",
+        model: "resort",
         key: "id",
       },
     },
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: "review",

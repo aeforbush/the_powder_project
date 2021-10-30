@@ -1,20 +1,21 @@
 const Content = require('./Content');
 const Review = require('./Review');
 const User = require('./User');
+const Resort = require('./Resort');
 
-User.hasMany(Content, {
-  foreignKey: 'user_id'
-});
+// User.hasMany(Resort, {
+//   foreignKey: 'user_id'
+// });
   
-Content.belongsTo(User, {
-  foreignKey: 'user_id'
-});
+// Resort.belongsTo(User, {
+//   foreignKey: 'user_id'
+// });
 
 Review.belongsTo(User, {
   foreignKey: 'user_id'
 });
   
-Review.belongsTo(Content, {
+Review.belongsTo(Resort, {
   foreignKey: 'content_id'
 });
   
@@ -22,7 +23,7 @@ User.hasMany(Review, {
   foreignKey: 'user_id'
 });
   
-Content.hasMany(Review, {
+Resort.hasMany(Review, {
   foreignKey: 'content_id'
 });
 
