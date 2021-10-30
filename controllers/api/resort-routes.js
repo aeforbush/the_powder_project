@@ -4,6 +4,7 @@ const chalk = require("chalk");
 
 // get all Resort content
 router.get("/", (req, res) => {
+  console.log(chalk.greenBright(models));
   Resort.findAll({
     where: {
       attributes: ["id", "resort_title", "resort_content"],

@@ -3,7 +3,7 @@ const { Review } = require("../../models");
 
 router.get("/", (req, res) => {
   Review.findAll({
-    attributes: ["id", "review_text", "user_id", "content_id"],
+    attributes: ["id", "review_text", "user_id"],
   })
     .then((the_powder_project_db) => res.json(the_powder_project_db))
     .catch((err) => {
@@ -17,7 +17,7 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "review_text", "user_id", "content_id"],
+    attributes: ["id", "review_text", "user_id"],
   })
     .then((the_powder_project_db) => res.json(the_powder_project_db))
     .catch((err) => {

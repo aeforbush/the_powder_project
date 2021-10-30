@@ -24,14 +24,6 @@ Review.init(
         key: "id",
       },
     },
-    content_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "resort",
-        key: "id",
-      },
-    },
   },
   {
     sequelize,
@@ -43,4 +35,3 @@ Review.init(
 );
 
 module.exports = Review;
-
