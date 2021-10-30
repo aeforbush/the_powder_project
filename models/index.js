@@ -1,29 +1,22 @@
-const Content = require('./Content');
-const Review = require('./Review');
-const User = require('./User');
-
-User.hasMany(Content, {
-  foreignKey: 'user_id'
-});
-  
-Content.belongsTo(User, {
-  foreignKey: 'user_id'
-});
+const Content = require("./Content");
+const Review = require("./Review");
+const User = require("./User");
+const Resort = require("./Resort");
 
 Review.belongsTo(User, {
-  foreignKey: 'user_id'
+  foreignKey: "user_id",
 });
-  
-Review.belongsTo(Content, {
-  foreignKey: 'content_id'
+
+Review.belongsTo(Resort, {
+  foreignKey: "content_id",
 });
-  
+
 User.hasMany(Review, {
-  foreignKey: 'user_id'
+  foreignKey: "user_id",
 });
-  
-Content.hasMany(Review, {
-  foreignKey: 'content_id'
+
+Resort.hasMany(Review, {
+  foreignKey: "content_id",
 });
 
 module.exports = { Content, Review, User };

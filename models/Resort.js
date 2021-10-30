@@ -2,9 +2,9 @@ const { Model, DataTypes } = require("sequelize");
 
 const sequelize = require("../config/connection");
 
-class Review extends Model {}
+class Resort extends Model {}
 
-Review.init(
+Resort.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -12,26 +12,21 @@ Review.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    review_text: {
-      type: DataTypes.TEXT,
+    resort_title: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    user_id: {
-      type: DataTypes.INTEGER,
+    resort_content: {
+      type: DataTypes.TEXT,
       allowNull: false,
-      references: {
-        model: "user",
-        key: "id",
-      },
     },
   },
   {
     sequelize,
-    timestamps: true,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "review",
+    modelName: "resort",
   }
 );
-
-module.exports = Review;
+module.exports = Resort;

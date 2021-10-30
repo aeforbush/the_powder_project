@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
   // findAll is one of the model class methods
   // querying all of the users from the user table in the db || SELECT * FROM
   User.findAll({
-    attributes: {exclude: ['password']}
+    attributes: { exclude: ["password"] },
   })
     .then((dbUserdata) => res.json(dbUserdata))
     .catch((err) => {
@@ -19,7 +19,7 @@ router.get("/", (req, res) => {
 // GET/api/users/1
 router.get("/:id", (req, res) => {
   User.findOne({
-    attributes: { exclude: ['password']},
+    attributes: { exclude: ["password"] },
     // where option = SELECT * FROM users WHERE id = 1
     where: {
       id: req.params.id,
@@ -60,22 +60,46 @@ router.post("/", (req, res) => {
 });
 
 // POST/api/users
-router.post('/login', (req, res) => {
-  console.log(chalk.blue("request received"))
+router.post("/login", (req, res) => {
+  console.log(chalk.blue("request received"));
   User.findOne({
     where: {
-      email: req.body.email
-    }
-  })
-  .then(dbUserdata => {
+      email: req.body.email,
+    },
+  }).then((dbUserdata) => {
     if (!dbUserdata) {
-      res.status(400).json({message: "No user found with that email address"});
+      res
+        .status(400)
+        .json({ message: "No user found with that email address" });
       return;
     }
-    res.json({user: dbUserdata});
+
+    const validPassword = dbUserdata.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res.status(400).json({ message: "Incorrect password" });
+      return;
+    }
+
+    req.session.save(() => {
+      // declare session variables
+      req.session.user_id = dbUserdata.id;
+      req.session.logginIn = true;
+    });
+    res.json({ user: dbUserdata, message: "You are logged in!" });
     // verify user
-  })
-})
+  });
+});
+
+router.post("/logout", (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
 
 // PUT/api/users/1
 router.put("/:id", (req, res) => {
