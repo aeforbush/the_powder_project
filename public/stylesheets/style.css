@@ -1,0 +1,34 @@
+:root {
+ --primary : rgb(255, 255, 255);
+ --primary-variation : rgb(235, 243, 243);
+ --secondary : rgb(0, 0, 107);
+ --secondary-variation-a : rgb(44, 44, 255);
+ --secondary-variation-b : rgb(133, 133, 253);
+ --terciary : black;
+}
+
+header {
+    background-color : var(--primary);
+}
+
+main {
+    background-color : var(--primary-variation);
+}
+
+a {
+    text-decoration: none;
+    color : var(--secondary);
+}
+
+a:visited {
+    color : var(--secondary-variation-b)
+}
+
+a:hover {
+    color : var(--secondary-variation-a);
+}
+
+footer {
+    background-color : var(--primary);
+}
+
