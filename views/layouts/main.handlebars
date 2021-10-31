@@ -14,13 +14,20 @@
         </h1>
         <nav>
           {{#if loggedIn}}
-            <a href="/dashboard">dashboard</a>
-            <button class="btn-no-style" id="logout">Logout</button>
+          <button class="dropbtn" id="logout">Logout</button>
           {{else}}
-            <a href="/login">Login</a>
+          <button class="dropbtn">
+          <a href="/login">Login</a>
+          </button>
           {{/if}}
-          <button class="btn-no-style" id="resorts">Mountain Resorts</button>
-
+          <div class='dropdown'>
+          <button onclick="myFunction()" class="dropbtn" id="Resorts">Mountain Resorts</button>
+          <div id="myDropdown" class="dropdown-content">
+            <a href="/resorts/{{resort.id}}>{{resort.content.length}}">Alta Ski Area</a>
+            <a href="/resorts/{{resort.id}}>{{resort.content.length}}">Snowbird</a>
+            <a href="/resorts/{{resort.id}}>{{resort.content.length}}">Powder Mountain</a>
+          </div>
+          </div>
         </nav>
       </header>
       <main>
@@ -35,4 +42,26 @@
     {{/if}}
 
   </body>
+
+  <script>
+    /* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+  </script>
 </html>
