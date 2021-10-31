@@ -8,6 +8,10 @@
  --terciary : black;
 }
 
+* {
+    text-align: center;
+}
+
 header {
     background-color : var(--primary);
 }
@@ -103,6 +107,20 @@ nav a:hover, nav a:focus {
     text-align: center;
 }
 
+form {
+    align-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+form div {
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
 
 footer {
     background-color : var(--primary);
