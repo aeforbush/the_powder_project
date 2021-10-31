@@ -73,7 +73,7 @@ router.post("/login", (req, res) => {
         .json({ message: "No user found with that email address" });
       return;
     }
-
+    //verify user
     const validPassword = dbUserdata.checkPassword(req.body.password);
 
     if (!validPassword) {
@@ -84,6 +84,7 @@ router.post("/login", (req, res) => {
     req.session.save(() => {
       // declare session variables
       req.session.user_id = dbUserdata.id;
+      req.session.username = dbUserdata.username;
       req.session.logginIn = true;
     });
     res.json({ user: dbUserdata, message: "You are logged in!" });

@@ -1,27 +1,35 @@
 // res.render() can accept a second argument, an object, which includes all the data to be passed in
-const router = require('express').Router();
+const router = require("express").Router();
+const { Content, Resort } = require("../models");
 
-router.get('/', (req, res) => {
-    res.render('homepage', {
-        id: 1,
-        post_url: "https://thepowderproject.com/guide/",
-        title: 'The Powder Project',
-        created_at: new Date(),
-        vote_count: 10,
-        comments: [{}, {}],
-        user: {
-            username: 'test_user'
-        }
+router.get("/", (req, res) => {
+  Content.findAll({}).then((dbContentData) => {
+    console.log(dbContentData[0].content);
+    res.render("homepage", {
+      // .content matches the model
+      content: dbContentData[0].content,
+      title: dbContentData[0].title,
     });
+  });
 });
 
-router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-      res.redirect('/');
-      return;
-    }
-  
-    res.render('login');
+router.get("/login", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+
+  res.render("login");
+});
+
+router.get("/", (req, res) => {
+  Resort.findAll({}).then((dbResortData) => {
+    console.log(dbResortData[0].resort_content);
+    res.render("resorts", {
+      resort_content: dbResortData[0].resort_content,
+      resort_title: dbResortData[0].resort_title,
+    });
   });
+});
 
 module.exports = router;
