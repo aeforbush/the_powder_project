@@ -19,4 +19,4 @@ Resort.hasMany(Review, {
   foreignKey: "content_id",
 });
 
-module.exports = { Content, Review, User };
+module.exports = { Content, Review, User, Resort };

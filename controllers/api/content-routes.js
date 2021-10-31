@@ -1,9 +1,8 @@
 const router = require("express").Router();
 const { Content } = require("../../models");
-
 const chalk = require("chalk");
 
-// get all Content
+// get all  homepage Content
 router.get("/", (req, res) => {
   Content.findAll({
     attributes: ["id", "title", "content"],
