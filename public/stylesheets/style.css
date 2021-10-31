@@ -99,8 +99,13 @@ nav a:hover, nav a:focus {
     color: var(--primary);
 }
 
+.post {
+    text-align: center;
+}
+
 
 footer {
     background-color : var(--primary);
+    text-align: center;
 }
 
