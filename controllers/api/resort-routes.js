@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { Resort } = require("../../models");
 const chalk = require("chalk");
+const { SSL_OP_NETSCAPE_DEMO_CIPHER_CHANGE_BUG } = require("constants");
 
 // get all Resort content
 router.get("/", (req, res) => {
