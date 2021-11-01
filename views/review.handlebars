@@ -1,8 +1,13 @@
-<form class="review-form">
+<form class="new-review-form" method="post" action="/api/reviews">
     <div>
         <label for="review-title">Review Title:</label>
-        <input type="text">
+        <input type="text" id="review-title" value="Title of review.">
+        <input type="submit" value="Submit">
+    </div>
+    <div>
+        <label for="review_text">Review Text:</label>
+        <input type="text" id="review_text" value="Your review here!">
     </div>
 </form>
 
-<script src="/javascript/add-review.js"></script></html>
+<script src="javascript/add-review.js"></script>
