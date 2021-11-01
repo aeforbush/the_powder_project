@@ -1,16 +1,17 @@
 // creating CRUD operation routes that work with the User model
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Resort, Review } = require("../../models");
 const chalk = require("chalk");
+const bcrypt = 
 
 // GET/api/users
 router.get("/", (req, res) => {
   // findAll is one of the model class methods
   // querying all of the users from the user table in the db || SELECT * FROM
   User.findAll({
-    attributes: { exclude: ["password"] },
+    attributes: { exclude: ["password"] },  
   })
-    .then((dbUserdata) => res.json(dbUserdata))
+    .then((dbUserData) => res.json(dbUserData))
     .catch((err) => {
       console.log(chalk.blue(err));
     });
@@ -24,14 +25,28 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
+    include: [
+      {
+        model: Resort,
+        attributes: ['id', 'resort_title', 'resort_content'],
+      },
+      {
+        model: Review,
+        attributes: ['id', 'review_text', 'created_at' ],
+        include: {
+          model: Resort,
+          attributes: ['resort_title']
+        }
+      }
+    ]
   })
-    .then((dbUserdata) => {
-      if (!dbUserdata) {
+    .then((dbUserData) => {
+      if (!dbUserData) {
         // 404 = wrong piece of data looked for
         res.status(404).json({ message: "no user found with this id" });
         return;
       }
-      res.json(dbUserdata);
+      res.json(dbUserData);
     })
     .catch((err) => {
       console.log(chalk.blue(err));
@@ -45,13 +60,20 @@ router.post("/", (req, res) => {
   User.create({
     // passsing in key/value, values comes from req.body
     // SQL looks like INSERT INTO users
-    //   (username, email, password)
-    //   VALUES('username', 'email', 'password')
+    // VALUES('username', 'email', 'password')
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
   })
-    .then((dbUserdata) => res.json(dbUserdata))
+    .then((dbUserData) => {
+      req.session.save(() => {
+        req.session.user_id - dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
+
+        res.json(dbUserData);
+      });
+    })
     .catch((err) => {
       console.log(chalk.blue(err));
       // 500 = internal server error
@@ -61,20 +83,20 @@ router.post("/", (req, res) => {
 
 // POST/api/users
 router.post("/login", (req, res) => {
-  console.log(chalk.blue("request received"));
+  console.log(chalk.blue(req.body.password));
   User.findOne({
     where: {
       email: req.body.email,
     },
-  }).then((dbUserdata) => {
-    if (!dbUserdata) {
+  }).then((dbUserData) => {
+    if (!dbUserData) {
       res
         .status(400)
         .json({ message: "No user found with that email address" });
       return;
     }
-    //verify user
-    const validPassword = dbUserdata.checkPassword(req.body.password);
+    // verify user || pass in plaintext password as an argument
+    const validPassword = dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
       res.status(400).json({ message: "Incorrect password" });
@@ -83,12 +105,12 @@ router.post("/login", (req, res) => {
 
     req.session.save(() => {
       // declare session variables
-      req.session.user_id = dbUserdata.id;
-      req.session.username = dbUserdata.username;
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
       req.session.logginIn = true;
+
+      res.json({ user: dbUserData, message: "You are logged in!" });
     });
-    res.json({ user: dbUserdata, message: "You are logged in!" });
-    // verify user
   });
 });
 
@@ -114,12 +136,12 @@ router.put("/:id", (req, res) => {
       id: req.params.id,
     },
   })
-    .then((dbUserdata) => {
-      if (!dbUserdata[0]) {
+    .then((dbUserData) => {
+      if (!dbUserData[0]) {
         res.status(404).json({ message: "No user found with this id" });
         return;
       }
-      res.json(dbUserdata);
+      res.json(dbUserData);
     })
     .catch((err) => {
       console.log(chalk.blue(err));
@@ -133,12 +155,12 @@ router.delete("/:id", (req, res) => {
       id: req.params.id,
     },
   })
-    .then((dbUserdata) => {
-      if (!dbUserdata) {
+    .then((dbUserData) => {
+      if (!dbUserData) {
         res.status(404).json({ message: "No user found with this id" });
         return;
       }
-      res.json(dbUserdata);
+      res.json(dbUserData);
     })
     .catch((err) => {
       console.log(chalk.blue(err));

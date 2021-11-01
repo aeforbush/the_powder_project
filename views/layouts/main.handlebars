@@ -13,11 +13,11 @@
           <a href="/" class="">The Powder Project</a>
         </h1>
         <nav>
-          {{#if loggedIn}}
-          <button class="dropbtn" id="logout">Logout</button>
-          {{else}}
+          {{!-- {{#if loggedIn}} --}}
+          {{!-- <button class="dropbtn" id="logout">Logout</button> --}}
+          {{!-- {{else}} --}}
           <a href="/login">Login</a>
-          {{/if}}
+          {{!-- {{/if}} --}}
           <div class='dropdown'>
           <button onclick="myFunction()" class="dropbtn" id="Resorts">Mountain Resorts</button>
           <div id="myDropdown" class="dropdown-content">
@@ -26,6 +26,7 @@
             <a href="/resorts/3">Powder Mountain</a>
           </div>
           </div>
+          <button id="logout" class="btn-no-style">Logout</button>
         </nav>
       </header>
       <main>
@@ -35,9 +36,9 @@
         Thanks for visiting!
       </footer>
     </div>
-    {{#if loggedIn}}
+    {{!-- {{#if loggedIn}} --}}
       <script src="/javascript/logout.js"></script>
-    {{/if}}
+    {{!-- {{/if}} --}}
 
   </body>
 
