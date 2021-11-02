@@ -1,18 +1,21 @@
 const { Review } = require('../models');
 
 const reviewData = [{
-        review_text: "Lorem ipsum dolor sit amet",
+        review_text: "Greatest snow on earth!",
         user_id: 1,
+        resort_id: 1
         
     },
     {
-        review_text: "consectetur adipiscing elit",
+        review_text: "Great family vacation spot!",
         user_id: 2,
+        resort_id: 2
        
     },
     {
-        review_text: "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+        review_text: "One of Utah's hidden gems!",
         user_id: 3,
+        resort_id: 3
       
     }
 ];
