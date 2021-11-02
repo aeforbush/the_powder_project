@@ -9,7 +9,7 @@ const resortData = [
   },
   {
     resort_title: "Snowbird",
-    resort_content: "As you wind up Little Cottonwood Canyon, you'll find some of the greatest snow on earth at Snowbird. Snowbird is located just under Alta, and the two have won multiple awards throughout the years for having the best snow in the country! Snowbird experiences a weather phenomenon known as lake-effect. When cold air mass moves across the Great Salt Lake, the lower layers of air are heated up by the lake water. This causes it to pick up water vapor and rise through the colder air above, thus freezing and falling later on as snow.",
+    resort_content: "As you wind up Little Cottonwood Canyon, you'll find some of the greatest snow on earth at Snowbird. Snowbird is located just under Alta, and the two have won multiple awards throughout the years for having the best snow in the country! Snowbird experiences a weather phenomenon known as The Great Salt Lake effect. Due to its salinity the lake never freezes, it also reduces moisture in the vapor moving across the lake, the lower layers of air are heated up by the lake water. This causes it to pick up water vapor and rise through the colder air above, thus freezing and falling later on as snow, creating what's locally known as The Greatest Snow on Earth.",
     annual_snowfall: "Annual snowfall: 500 inches"
   },
   {
