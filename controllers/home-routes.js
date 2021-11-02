@@ -30,7 +30,7 @@ router.get("/resort/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "resort_title", "resort_content"],
+    attributes: ["id", "resort_title", "resort_content", "annual_snowfall"],
     include: [
       {
         model: Review,
