@@ -1,18 +1,17 @@
 const router = require("express").Router();
-const sequelize = require("../config/connection");
 const { Review, User, Resort } = require("../models");
 const chalk = require("chalk");
 
 router.get("/", (req, res) => {
-  Review.findAll({
+  Resort.findAll({
     where: {
-      user_id: req.session.user.user_id,
+      user_id: req.session.user_id,
     },
-    attributes: ["id", "review_text", "created_at"],
+    attributes: ["id", "resort_title", "resort_content"],
     include: [
       {
-        model: Resort,
-        attributes: ["id", "resort_title", "resort_content"],
+        model: Review,
+        attributes: ["id", "review_text", "user_id"],
         include: {
           model: User,
           attributes: ["username"],
@@ -24,9 +23,9 @@ router.get("/", (req, res) => {
       },
     ],
   })
-    .then((dbReviewData) => {
+    .then((dbResortData) => {
       // serialize data before passing to template
-      const reviews = dbReviewData.map((review) => review.get({ plain: true }));
+      const reviews = dbResortData.map((review) => review.get({ plain: true }));
       res.render("dashboard", { reviews, loggedIn: true });
     })
     .catch((err) => {

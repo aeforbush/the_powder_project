@@ -1,10 +1,13 @@
 // res.render() can accept a second argument, an object, which includes all the data to be passed in
 const router = require("express").Router();
 const { Content, Resort } = require("../models");
+const chalk = require('chalk');
+
 
 router.get("/", (req, res) => {
+  console.log(chalk.blueBright(req.session));
   Content.findAll({}).then((dbContentData) => {
-    console.log(dbContentData[0].content);
+    // console.log(dbContentData[0].content);
     res.render("homepage", {
       // .content matches the model
       content: dbContentData[0].content,

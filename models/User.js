@@ -4,7 +4,13 @@ const bcrypt = require("bcrypt");
 
 // create User model extends is key word for User to inherit the functionalitu of the model class
 // when extending a class from the Sequelize model class, that new class(model) inherits methods for creating, reading, updating and deleting data from the db
-class User extends Model {}
+class User extends Model {
+  // set up method to run on instance data (per user) to check pw
+  checkPassword(loginPw) {
+    // using sync to speed up development || use async for expediated experience
+    return bcrypt.compareSync(loginPw, this.password);
+  }
+}
 
 // define table columns and configurations and init() provides context as to how the inherited methods work
 User.init(
@@ -37,7 +43,9 @@ User.init(
     // hooks aka lifecycle events are functions that are called before or after calls in Sequelize
     hooks: {
       async beforeCreate(newUserData) {
-        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        newUserData.password = await bcrypt.hash(
+          newUserData.password, 
+          10);
         return newUserData;
       },
       // used when sending an update command
