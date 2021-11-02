@@ -23,9 +23,9 @@ const resortData = [
     annual_snowfall: "Annual snowfall: 500 inches"
   },
   {
-    resort_title: "",
-    resort_content: "",
-    annual_snowfall: ""
+    resort_title: "Deer Valley",
+    resort_content: "lorem ipsum",
+    annual_snowfall: "Annual snowfall: inches"
   }
 ];
 
