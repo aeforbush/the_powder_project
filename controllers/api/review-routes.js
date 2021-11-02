@@ -20,7 +20,7 @@ router.get("/", (req, res) => {
       }
     ]
   })
-    .then((the_powder_project_db) => res.json(the_powder_project_db))
+    .then((dbReviewData) => res.json(dbReviewData))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
@@ -34,7 +34,7 @@ router.get("/:id", (req, res) => {
     },
     attributes: ["id", "review_text", "resort_id", "user_id"],
   })
-    .then((the_powder_project_db) => res.json(the_powder_project_db))
+    .then((dbReviewData) => res.json(dbReviewData))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
@@ -42,25 +42,28 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+  // check session
+  if (req.session) {
   Review.create({
     // will want to change to review_text once it's also changed in review.js
     review_text: req.body.review_text,
-    user_id: req.body.user_id,
     resort_id: req.body.resort_id,
-    // content_id: req.body.content_id
+    user_id: req.session.user_id,
+  
   })
-    .then((the_powder_project_db) => res.json(the_powder_project_db))
+    .then((dbReviewData) => res.json(dbReviewData))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
     });
+  }
 });
 
 router.delete("/:id", (req, res) => {
   Review.destroy({
     where: { id: req.params.id },
   })
-    .then((the_powder_project_db) => res.json(the_powder_project_db))
+    .then((dbReviewData) => res.json(dbReviewData))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);

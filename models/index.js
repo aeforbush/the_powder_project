@@ -11,9 +11,6 @@ Resort.belongsTo(User, {
   foreignKey: "user_id",
 });
 
-// User.belongsToMany(Resort, {
-//   foreignKey: "user_id",
-// });
 
 Resort.belongsTo(User, {
   foreignKey: "resort_id",
