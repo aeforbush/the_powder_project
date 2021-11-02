@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
     where: {
       user_id: req.session.user_id,
     },
-    attributes: ["id", "resort_title", "resort_content"],
+    attributes: ["id", "resort_title", "resort_content", "annual_snowfall"],
     include: [
       {
         model: Review,
@@ -25,8 +25,8 @@ router.get("/", (req, res) => {
   })
     .then((dbResortData) => {
       // serialize data before passing to template
-      const reviews = dbResortData.map((review) => review.get({ plain: true }));
-      res.render("dashboard", { reviews, loggedIn: true });
+      // const resorts = dbResortData.map((review) => review.get({ plain: true }));
+      res.render("resorts", { resorts, loggedIn: true });
     })
     .catch((err) => {
       console.log(chalk.greenBright(err));

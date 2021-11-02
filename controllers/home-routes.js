@@ -15,14 +15,32 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/login", (req, res) => {
-  console.log(chalk.blueBright("Success!"));
-  if (req.session.loggedIn) {
-    res.redirect("/");
-    return;
-  }
+router.get("/resorts", (req, res) => {
+  Resort.findAll({
+    attributes: ["id", "resort_title", "resort_content", "annual_snowfall"],
+    include: [
+      {
+        model: Review,
+        attributes: ["id", "review_text", "user_id", "resort_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+    ],
+  })
+    .then((dbResortData) => {
+      const resorts = dbResortData.map((resort) => resort.get({ plain: true }));
 
-  res.render("login");
+      res.render("resorts", {
+        resorts,
+        loggedIn: req.session.loggedIn,
+      });
+    })
+    .catch((err) => {
+      console.log(chalk.greenBright(err));
+      res.status(500).json(err);
+    });
 });
 
 router.get("/resort/:id", (req, res) => {
@@ -40,6 +58,10 @@ router.get("/resort/:id", (req, res) => {
           attributes: ["username"],
         },
       },
+      {
+        model: User,
+        attributes: ["username"],
+      },
     ],
   })
     .then((dbResortData) => {
@@ -51,7 +73,10 @@ router.get("/resort/:id", (req, res) => {
       const resort = dbResortData.get({ plain: true });
 
       // pass data to template
-      res.render("resorts", { resort });
+      res.render("resorts", {
+        resort,
+        loggedIn: req.session.loggedIn,
+      });
     })
     .catch((err) => {
       console.log(chalk.greenBright(err));
@@ -59,6 +84,14 @@ router.get("/resort/:id", (req, res) => {
     });
 });
 
+router.get("/login", (req, res) => {
+  console.log(chalk.blueBright("Success!"));
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
 
+  res.render("login");
+});
 
 module.exports = router;

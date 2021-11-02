@@ -2,7 +2,6 @@
 const router = require("express").Router();
 const { User, Resort, Review } = require("../../models");
 const chalk = require("chalk");
-const bcrypt = 
 
 // GET/api/users
 router.get("/", (req, res) => {
