@@ -59,4 +59,6 @@ router.get("/resort/:id", (req, res) => {
     });
 });
 
+// Do we need the review route here?
+
 module.exports = router;
