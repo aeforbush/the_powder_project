@@ -22,7 +22,7 @@ async function reviewFormHandler(event) {
     });
 
     if (response.ok) {
-      document.location.reload();
+      document.location.replace('resort/id');
     } else {
       alert(response.statusText);
     }

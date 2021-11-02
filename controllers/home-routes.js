@@ -43,7 +43,7 @@ router.get("/resorts", (req, res) => {
     });
 });
 
-router.get("/resort/:id", (req, res) => {
+router.get("/resorts/:id", (req, res) => {
   Resort.findOne({
     where: {
       id: req.params.id,
