@@ -90,9 +90,9 @@ a {
     color : var(--secondary);
 }
 
-a:visited {
+/* a:visited {
     color : var(--secondary-variation-b)
-}
+} */
 
 a:hover {
     color : var(--secondary-variation-a);
