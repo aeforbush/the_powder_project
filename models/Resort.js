@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require("sequelize");
-
 const sequelize = require("../config/connection");
 
 class Resort extends Model {}
@@ -19,6 +18,17 @@ Resort.init(
     resort_content: {
       type: DataTypes.TEXT,
       allowNull: false,
+    },
+    annual_snowfall: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "user",
+        key: "id",
+      },
     },
   },
   {

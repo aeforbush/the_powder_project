@@ -7,26 +7,26 @@ async function commentFormHandler(event) {
     //     window.location.toString().split('/').length - 1
     // ];
 
-    if (review_text) {
-        const response = await fetch('/api/resorts', {
-            method: 'POST',
-            body: JSON.stringify({
-                post_id,
-                review_text
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-        if (response.ok) {
-            document.location.reload();
-
-        } else {
-            alert(response.statusText);
-            // document.querySelector('#comment-form').style.display = "block";
+    const response = await fetch('/api/resorts', {
+        method: 'POST',
+        body: JSON.stringify({
+            id,
+            resort_title,
+            resort_content
+        }),
+        headers: {
+            'Content-Type': 'application/json'
         }
+    });
+
+    if (response.ok) {
+        document.location.replace('/dashboard');
+
+    } else {
+        alert(response.statusText);
+        // document.querySelector('#comment-form').style.display = "block";
     }
 }
+
 
 document.querySelector('.resort-list').addEventListener('submit', commentFormHandler);

@@ -18,9 +18,16 @@ Review.init(
     },
     user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      // allowNull: false,
       references: {
         model: "user",
+        key: "id",
+      },
+    },
+    resort_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "resort",
         key: "id",
       },
     },
