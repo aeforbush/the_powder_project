@@ -10,3 +10,25 @@
     <a href="/resort/{{resort.id}}">{{resort.reviews.length}} reviews(s)</a>
   </div>
 </article>
+<form class="review-form">
+  <div>
+    <textarea name="review-body"></textarea>
+  </div>
+
+  <div>
+    <button type="submit">Add Review</button>
+  </div>
+</form>
+
+<div class="reviews">
+  {{#each resort.reviews}}
+  <section class="review">
+    <div class="meta">
+      {{user.username}} on {{created_at}}
+    </div>
+    <div class="text">
+      {{reviews_text}}
+    </div>
+  </section>
+  {{/each}}
+</div>
