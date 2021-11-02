@@ -1,8 +1,7 @@
 // res.render() can accept a second argument, an object, which includes all the data to be passed in
 const router = require("express").Router();
-const { Content, Resort } = require("../models");
-const chalk = require('chalk');
-
+const { Content, Resort, Review, User } = require("../models");
+const chalk = require("chalk");
 
 router.get("/", (req, res) => {
   console.log(chalk.blueBright(req.session));
@@ -17,6 +16,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
+  console.log(chalk.blueBright("Success!"));
   if (req.session.loggedIn) {
     res.redirect("/");
     return;
@@ -25,14 +25,40 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-router.get("/", (req, res) => {
-  Resort.findAll({}).then((dbResortData) => {
-    console.log(dbResortData[0].resort_content);
-    res.render("resorts", {
-      resort_content: dbResortData[0].resort_content,
-      resort_title: dbResortData[0].resort_title,
+router.get("/resort/:id", (req, res) => {
+  Resort.findOne({
+    where: {
+      id: req.params.id,
+    },
+    attributes: ["id", "resort_title", "resort_content"],
+    include: [
+      {
+        model: Review,
+        attributes: ["id", "review_text", "user_id", "resort_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+    ],
+  })
+    .then((dbResortData) => {
+      if (!dbResortData) {
+        res.status(404).json({ message: "No resort found with this id" });
+        return;
+      }
+      // serialize the data
+      const resort = dbResortData.get({ plain: true });
+
+      // pass data to template
+      res.render("resorts", { resort });
+    })
+    .catch((err) => {
+      console.log(chalk.greenBright(err));
+      res.status(500).json(err);
     });
-  });
 });
+
+// Do we need the review route here?
 
 module.exports = router;
