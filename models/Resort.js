@@ -19,6 +19,10 @@ Resort.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    annual_snowfall: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
