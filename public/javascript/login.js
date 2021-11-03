@@ -14,9 +14,9 @@ async function loginFormHandler(event) {
         }),
         headers: { 'Content-Type': 'application/json' }
       });
-  
+      console.log(response)
       if (response.ok) {
-        document.location.replace('/resorts');
+       // document.location.replace('/resorts');
       } else {
         alert(response.statusText);
       }
@@ -40,9 +40,9 @@ async function loginFormHandler(event) {
         }),
         headers: { 'Content-Type': 'application/json' }
       });
-  
+      console.log(response)
       if (response.ok) {
-        document.location.replace('/resorts');
+        //document.location.replace('/resorts');
       } else {
         alert(response.statusText);
       }

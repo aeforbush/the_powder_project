@@ -43,12 +43,13 @@ router.get("/:id", (req, res) => {
 
 router.post("/", (req, res) => {
   // check session
-  if (req.session) {
+  
+
   Review.create({
     // will want to change to review_text once it's also changed in review.js
     review_text: req.body.review_text,
     resort_id: req.body.resort_id,
-    user_id: req.session.user_id,
+    user_id: req.body.user_id,
   
   })
     .then((dbReviewData) => res.json(dbReviewData))
@@ -56,7 +57,7 @@ router.post("/", (req, res) => {
       console.log(err);
       res.status(400).json(err);
     });
-  }
+  
 });
 
 router.delete("/:id", (req, res) => {
