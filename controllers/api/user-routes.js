@@ -69,9 +69,10 @@ router.post("/", (req, res) => {
         req.session.user_id - dbUserData.id;
         req.session.username = dbUserData.username;
         req.session.loggedIn = true;
-
-        res.json(dbUserData);
+  
+       
       });
+      res.json(`response ${JSON.stringify(dbUserData)}`);
     })
     .catch((err) => {
       console.log(chalk.blue(err));
@@ -103,15 +104,15 @@ router.post("/login", (req, res) => {
     }
 
     req.session.save(() => {
-      // declare session variables
-      req.session.user_id = dbUserData.id;
+      req.session.user_id - dbUserData.id;
       req.session.username = dbUserData.username;
-      req.session.logginIn = true;
-
-      res.json({ user: dbUserData, message: "You are logged in!" });
+      req.session.loggedIn = true;
+     
+      res.json(`response ${JSON.stringify(dbUserData)}`);
+    });
     });
   });
-});
+
 
 router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
