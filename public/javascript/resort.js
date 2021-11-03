@@ -1,4 +1,5 @@
-async function commentFormHandler(event) {
+const chalk = require('chalk');
+async function resortFormHandler(event) {
     event.preventDefault();
 
     // const review_text = document.querySelector('input[name="comment-body"]').value.trim();
@@ -8,6 +9,7 @@ async function commentFormHandler(event) {
     // ];
 
     const response = await fetch('/api/resorts', {
+        
         method: 'POST',
         body: JSON.stringify({
             id,
@@ -20,13 +22,14 @@ async function commentFormHandler(event) {
     });
 
     if (response.ok) {
-        document.location.replace('/dashboard');
+        console.log(chalk.greenBright(response.body))
+        document.location.replace('/resorts');
 
     } else {
         alert(response.statusText);
-        // document.querySelector('#comment-form').style.display = "block";
+       
     }
 }
 
 
-document.querySelector('.resort-list').addEventListener('submit', commentFormHandler);
+document.querySelector('.resort-list').addEventListener('submit', resortFormHandler);
