@@ -71,7 +71,7 @@ router.get("/resorts/:id", (req, res) => {
       }
       // serialize the data
       const resort = dbResortData.get({ plain: true });
-
+      resort.url = "./views/images/resort_1.jpg"
       // pass data to template
       res.render("resorts", {
         resort,
