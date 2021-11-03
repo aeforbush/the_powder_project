@@ -21,7 +21,7 @@ async function reviewFormHandler(event) {
       console.log("====================");
       console.log(review_text);
       console.log("====================");
-       document.location.reload();
+      //  document.location.reload();
     } else {
       alert(response.statusText);
     }
