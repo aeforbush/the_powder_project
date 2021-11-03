@@ -3,7 +3,7 @@ async function reviewFormHandler(event) {
   event.preventDefault();
 
   const review_text = document.querySelector('#review-body').value;
- 
+  
 
   if (review_text) {
     const response = await fetch(`/api/reviews`, {
@@ -16,7 +16,7 @@ async function reviewFormHandler(event) {
         "Content-Type": "application/json",
       },
     });
-
+    console.log(response);
     if (response.ok) {
       console.log("====================");
       console.log(review_text);
@@ -27,6 +27,7 @@ async function reviewFormHandler(event) {
     }
   }
 }
+
 
 document
   .querySelector(".review-form")
