@@ -2,18 +2,14 @@
 async function reviewFormHandler(event) {
   event.preventDefault();
 
-  const review_text = document.querySelector('#review-body').textContent;
-  const resort_id = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 1
-  ];
-
-  // console.log(chalk.greenBright(review_text, resort_id));
+  const review_text = document.querySelector('#review-body').value;
+ 
 
   if (review_text) {
     const response = await fetch(`/api/reviews`, {
       method: "post",
       body: JSON.stringify({
-        resort_id,
+        // resort_id,
         review_text,
       }),
       headers: {
@@ -22,7 +18,10 @@ async function reviewFormHandler(event) {
     });
 
     if (response.ok) {
-      document.location.replace('resort/id');
+      console.log("====================");
+      console.log(review_text);
+      console.log("====================");
+       document.location.reload();
     } else {
       alert(response.statusText);
     }
