@@ -2,12 +2,12 @@
 async function reviewFormHandler(event) {
   event.preventDefault();
 
-  const review_text = document.querySelector('input[name="review-body"]').value;
+  const review_text = document.querySelector('#review-body').textContent;
   const resort_id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
   ];
 
-  console.log(chalk.greenBright(review_text, resort_id));
+  // console.log(chalk.greenBright(review_text, resort_id));
 
   if (review_text) {
     const response = await fetch(`/api/reviews`, {
