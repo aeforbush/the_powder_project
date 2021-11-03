@@ -15,10 +15,10 @@ router.get("/", (req, res) => {
           attributes: ["username"],
         },
       },
-      {
-        model: User,
-        attributes: ["username"],
-      },
+      // {
+      //   model: User,
+      //   attributes: ["username"],
+      // },
     ],
   })
     .then((dbResortData) => {
@@ -46,10 +46,10 @@ router.get("/:id", (req, res) => {
             attributes: ["username"],
           },
         },
-        {
-          model: User,
-          attributes: ["username"],
-        },
+        // {
+        //   model: User,
+        //   attributes: ["username"],
+        // },
       ],
     })
       .then((dbResortData) => {
@@ -60,5 +60,7 @@ router.get("/:id", (req, res) => {
         res.status(500).json(err);
       });
   });
+
+
 
 module.exports = router;
