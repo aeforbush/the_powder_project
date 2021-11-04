@@ -4,6 +4,7 @@ async function reviewFormHandler(event) {
 
   const review_text = document.querySelector('#review-body').value;
   const resort_id = window.location.pathname.split(`/`)[2];
+ 
   
 
   if (review_text) {
@@ -12,6 +13,7 @@ async function reviewFormHandler(event) {
       body: JSON.stringify({
         review_text,
         resort_id,
+        
        
       }),
       headers: {
