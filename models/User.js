@@ -14,7 +14,7 @@ class User extends Model {
 
 // define table columns and configurations and init() provides context as to how the inherited methods work
 User.init(
-  // define columns (there are 4 of them)
+  // define columns (there are 4)
   {
     id: {
       type: DataTypes.INTEGER,
