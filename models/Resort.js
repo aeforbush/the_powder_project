@@ -23,6 +23,10 @@ Resort.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    map_URL: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
