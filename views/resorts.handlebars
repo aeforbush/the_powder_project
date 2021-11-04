@@ -1,20 +1,20 @@
 <article class="resort">
-  <div class="resort-title">
+  <div class="resort-title opacity">
     <h2>{{resort.resort_title}}</h2>
     <div class="meta">
       {{!-- <a href="/resort/{{resort.id}}">{{resort.reviews.length}} {{format_plural "review" reviews.length}}</a> --}}
     </div>
   </div>
   
-  <div class="resort-content">
+  <div class="resort-content opacity">
     <p>{{resort.resort_content}}</p>
   </div>
   
-  <div class="resort-snowfall">
+  <div class="resort-snowfall opacity">
     <p>Average annual snowfall is {{resort.annual_snowfall}}</p>
   </div>
 
-  <div class="resort-map">
+  <div class="resort-map opacity">
   <img src="{{resort.map_URL}}" alt="{{resort.resort_title}}">
   </div>
 
