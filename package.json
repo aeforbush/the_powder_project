@@ -8,6 +8,7 @@
     "start": "node server.js",
     "seed": "node seeds/index.js"
   },
+  "keywords": ["node", "heroku", "express"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aeforbush/the_powder_project.git"
