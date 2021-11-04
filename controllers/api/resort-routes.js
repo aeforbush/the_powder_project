@@ -5,7 +5,7 @@ const chalk = require("chalk");
 // get all Resort content
 router.get("/", (req, res) => {
   Resort.findAll({
-    attributes: ["id", "resort_title", "resort_content", "annual_snowfall"],
+    attributes: ["id", "resort_title", "resort_content", "annual_snowfall", "url"],
     include: [
       {
         model: Review,
@@ -36,7 +36,7 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-      attributes: ["id", "resort_title", "resort_content", "annual_snowfall"],
+      attributes: ["id", "resort_title", "resort_content", "annual_snowfall", "url"],
       include: [
         {
           model: Review,

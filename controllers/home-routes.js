@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
 
 router.get("/resorts", (req, res) => {
   Resort.findAll({
-    attributes: ["id", "resort_title", "resort_content", "annual_snowfall"],
+    attributes: ["id", "resort_title", "resort_content", "annual_snowfall", "url"],
     include: [
       {
         model: Review,
@@ -48,7 +48,7 @@ router.get("/resorts/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "resort_title", "resort_content", "annual_snowfall"],
+    attributes: ["id", "resort_title", "resort_content", "annual_snowfall", "url"],
     include: [
       {
         model: Review,

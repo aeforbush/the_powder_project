@@ -12,7 +12,9 @@
 .opacity {
     background-color : var(--primary-opacity);
     border-radius: 5px;
+    width: 100%;
 }
+
 
 * {
     text-align: center;

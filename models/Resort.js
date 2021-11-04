@@ -23,7 +23,7 @@ Resort.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    map_URL: {
+    url: {
       type: DataTypes.TEXT,
       allowNull: false,
       },
