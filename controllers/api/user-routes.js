@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
   // findAll is one of the model class methods
   // querying all of the users from the user table in the db || SELECT * FROM
   User.findAll({
-    attributes: { exclude: ["password"] },  
+    attributes: { exclude: ["password"] },
   })
     .then((dbUserData) => res.json(dbUserData))
     .catch((err) => {
@@ -27,17 +27,17 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: Resort,
-        attributes: ['id', 'resort_title', 'resort_content', 'annual_snowfall'],
+        attributes: ["id", "resort_title", "resort_content", "annual_snowfall"],
       },
       {
         model: Review,
-        attributes: ['id', 'review_text', 'created_at' ],
+        attributes: ["id", "review_text", "created_at"],
         include: {
           model: Resort,
-          attributes: ['resort_title']
-        }
-      }
-    ]
+          attributes: ["resort_title"],
+        },
+      },
+    ],
   })
     .then((dbUserData) => {
       if (!dbUserData) {
@@ -58,21 +58,18 @@ router.post("/", (req, res) => {
   // expects username, email and password
   User.create({
     // passsing in key/value, values comes from req.body
-    // SQL looks like INSERT INTO users
-    // VALUES('username', 'email', 'password')
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
   })
     .then((dbUserData) => {
       req.session.save(() => {
-        req.session.user_id - dbUserData.user_id;
+        req.session.user_id - dbUserData.id;
         req.session.username = dbUserData.username;
         req.session.loggedIn = true;
-  
-       
+
+        res.json(dbUserData);
       });
-      res.json(dbUserData);
     })
     .catch((err) => {
       console.log(chalk.blue(err));
@@ -107,12 +104,11 @@ router.post("/login", (req, res) => {
       req.session.user_id - dbUserData.user_id;
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
-     
+
       res.json(dbUserData);
     });
-    });
   });
-
+});
 
 router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
