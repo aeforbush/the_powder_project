@@ -48,7 +48,7 @@ TBP
 * Add information about Avalanche Safety and Training
 
 ## Authors
-* Matt Barry, Jaxson Conners, Aimee Forbush and Tyler Sundquist 
+* Matt Barry, Aimee Forbush and Tyler Sundquist 
 
 ## GitHub 
 TBP
