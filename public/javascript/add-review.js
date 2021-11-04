@@ -3,14 +3,16 @@ async function reviewFormHandler(event) {
   event.preventDefault();
 
   const review_text = document.querySelector('#review-body').value;
+  const resort_id = window.location.pathname.split(`/`)[2];
   
 
   if (review_text) {
     const response = await fetch(`/api/reviews`, {
       method: "post",
       body: JSON.stringify({
-        // resort_id,
         review_text,
+        resort_id,
+       
       }),
       headers: {
         "Content-Type": "application/json",
@@ -21,7 +23,7 @@ async function reviewFormHandler(event) {
       console.log("====================");
       console.log(review_text);
       console.log("====================");
-      //  document.location.reload();
+      document.location.reload();
     } else {
       alert(response.statusText);
     }

@@ -2,7 +2,7 @@
   <div class="resort-title">
     <h2>{{resort.resort_title}}</h2>
     <div class="meta">
-      <a href="/resort/{{resort.id}}">{{resort.reviews.length}} {{format_plural "review" reviews.length}}</a>
+      {{!-- <a href="/resort/{{resort.id}}">{{resort.reviews.length}} {{format_plural "review" reviews.length}}</a> --}}
     </div>
   </div>
   
@@ -38,7 +38,7 @@
 
 <card class="reviews">
   {{#each resort.reviews}}
-  <article class="review">
+  <article id="review-data">
     <div class="meta">
       {{user.username}} on {{format_date created_at}}
     </div>
