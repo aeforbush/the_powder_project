@@ -47,7 +47,7 @@ app.set("view engine", "handlebars");
 
 
 
-// turn on connection to db and server ||  "sync" means that this Sequelize takes the models and connects them to the associatd db tables (creating it for you!)
+// turn on connection to db and server 
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(chalk.blue("Now listening!")));
