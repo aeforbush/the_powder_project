@@ -24,7 +24,7 @@
 
 <form class="review-form">
   <div>
-    <textarea id="review-body"></textarea>
+    <textarea class="opacity" id="review-body"></textarea>
   </div>
 
   <div>
@@ -34,7 +34,7 @@
 
 <card class="reviews">
   {{#each resort.reviews}}
-  <article id="review-data">
+  <article class="opacity" id="review-data">
     <div class="meta">
       {{user.username}} on {{format_date created_at}}
     </div>
