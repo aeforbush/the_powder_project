@@ -12,7 +12,7 @@
 .opacity {
     background-color : var(--primary-opacity);
     border-radius: 5px;
-    width: 100%;
+    width: 95%;
     padding: 5px;
     margin: 5px;
 }
@@ -20,6 +20,7 @@
 
 * {
     text-align: center;
+    word-wrap: break-word;
 }
 
 body {
@@ -29,6 +30,11 @@ body {
     background-position: center;
     background-attachment: fixed;
     background-position: 80%;
+}
+
+img {
+    width: 100%;
+    height: auto;
 }
 
 header {
