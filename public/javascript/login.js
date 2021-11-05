@@ -16,7 +16,7 @@ async function loginFormHandler(event) {
       });
       console.log(response)
       if (response.ok) {
-       document.location.reload();
+       document.location.reload("/");
       } else {
         alert(response.statusText);
       }
@@ -42,7 +42,7 @@ async function loginFormHandler(event) {
       });
       console.log(response)
       if (response.ok) {
-        document.location.reload();
+        document.location.reload("/");
       } else {
         alert(response.statusText);
       }
