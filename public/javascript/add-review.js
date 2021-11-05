@@ -13,8 +13,6 @@ async function reviewFormHandler(event) {
       body: JSON.stringify({
         review_text,
         resort_id,
-        
-       
       }),
       headers: {
         "Content-Type": "application/json",
