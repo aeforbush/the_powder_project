@@ -11,11 +11,6 @@ Resort.belongsTo(User, {
   foreignKey: "user_id",
 });
 
-
-Resort.belongsTo(User, {
-  foreignKey: "resort_id",
-});
-
 Review.belongsTo(User, {
   foreignKey: "user_id",
 });
