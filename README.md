@@ -7,11 +7,12 @@ The Powder Project is a CMS style site that helps snow sport enthusiasts determi
 ## Table of Contents
 * Prerequisites
 * Installation
-* Video Preview 
 * Deployed Link
 * Built With
 * License
+* Future Development
 * Authors
+* GitHub
 
 ## Prerequisites
 * NodeJS
@@ -20,17 +21,13 @@ The Powder Project is a CMS style site that helps snow sport enthusiasts determi
 
 
 ## Installation
-* Clone the repository to your local machine.  Run `npm install` to install all dependencies.  To connect to the database run `mysql -u root -p` and enter password from `.env` file.  Then run `source db/schema.sql` and `use ecommerce_db` and `quit` out of mysql shell.  Then run `npm start` to connect to the server.
+* Clone the repository to your local machine.  Run `npm install` to install all dependencies.  To connect to the database run `mysql -u root -p` and enter password from `.env` file.  Then run `source db/schema.sql` and `use the_powder_project_db` and `quit` out of mysql shell.  Then run `npm start` to connect to the server.
 
-
-## Video Preview
-
-TBP
 
 
 ## Deployed Link
 
-TBP
+https://hidden-anchorage-82210.herokuapp.com/
 
 ## Built With 
 * Javascipt
@@ -42,13 +39,19 @@ TBP
 
 
 ## License
+`MIT`
 
 ## Future Development
 * Create a Backcountry page 
 * Add information about Avalanche Safety and Training
+* Stream user photos/videos from Instagram/Facebook(Meta ???)/TikTok and remove user reviews
+* Terrain difficulty
+* Real-time snow forecast
+* Nearby accommodations
+
 
 ## Authors
-* Matt Barry, Aimee Forbush and Tyler Sundquist 
+* Matt Barry, Jaxson Conners, Aimee Forbush and Tyler Sundquist 
 
 ## GitHub 
-TBP
+
