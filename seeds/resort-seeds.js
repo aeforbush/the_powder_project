@@ -20,7 +20,7 @@ const resortData = [
     resort_content:
       "With over 8,400 acres and 150 trails, Powder Mountain is considered the largest ski resort in the entire nation! Skiiers and snowboarders alike enjoy these vast mountain ranges with little congregation from others. There is a strict limit on daily passes sold each day, so you can count on having these slopes almost all to yourself. Powder Mountain provides a relaxed experience for anyone who visits!",
     annual_snowfall: "350 inches",
-    url: "https://res.cloudinary.com/liftopia/image/upload/c_fit,d_defaults:default_logo_1.png,f_auto,h_980,q_auto,w_980/v1/production/trail_maps/285e1c5e1f61e6612698d93ae547542d.jpg"
+    url: "https://www.skicentral.com/images/trailmaps/801008-1200.jpg"
   },
   {
     resort_title: "Brighton",

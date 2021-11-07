@@ -17,15 +17,20 @@ const seedAll = async () => {
   await seedContent();
   console.log(chalk.redBright('--------------'));
 
-  await seedReviews();
-  console.log(chalk.redBright('--------------'));
-
   await seedResort();
   console.log(chalk.redBright('---------------'));
+  
+  await seedReviews();
+  console.log(chalk.redBright('--------------'));
 
 
 
   process.exit(0);
 };
 
-seedAll();
+seedAll()
+.catch((err) => {
+  console.log(chalk.greenBright(err));
+  res.status(500).json(err);
+});
+;

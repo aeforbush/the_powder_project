@@ -24,7 +24,7 @@ router.get("/resorts", (req, res) => {
         attributes: ["id", "review_text", "user_id", "resort_id", "created_at"],
         include: {
           model: User,
-          attributes: ["username"],
+          attributes: ["username", "id"],
         },
       },
     ],
@@ -55,12 +55,12 @@ router.get("/resorts/:id", (req, res) => {
         attributes: ["id", "review_text", "user_id", "resort_id", "created_at"],
         include: {
           model: User,
-          attributes: ["username"],
+          attributes: ["username", "id"],
         },
       },
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["username", "id"],
       },
     ],
   })
@@ -71,7 +71,6 @@ router.get("/resorts/:id", (req, res) => {
       }
       // serialize the data
       const resort = dbResortData.get({ plain: true });
-      // resort.url = "./views/images/resort_1.jpg"
       // pass data to template
       res.render("resorts", {
         resort,
@@ -87,7 +86,7 @@ router.get("/resorts/:id", (req, res) => {
 router.get("/login", (req, res) => {
   console.log(chalk.blueBright("Success!"));
   if (req.session.loggedIn) {
-    res.redirect("/");
+    res.redirect("/resorts/1");
     return;
   }
 
