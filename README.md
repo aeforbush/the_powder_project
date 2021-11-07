@@ -51,7 +51,7 @@ https://hidden-anchorage-82210.herokuapp.com/
 
 
 ## Authors
-* Matt Barry, Jaxson Conners, Aimee Forbush and Tyler Sundquist 
+* Matt Barry, Aimee Forbush and Tyler Sundquist 
 
 ## GitHub 
 https://github.com/aeforbush/the_powder_project.git
