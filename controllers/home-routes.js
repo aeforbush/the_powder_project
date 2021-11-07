@@ -11,6 +11,7 @@ router.get("/", (req, res) => {
       // .content matches the model
       content: dbContentData[0].content,
       title: dbContentData[0].title,
+      loggedIn: req.session.loggedIn,
     });
   });
 });
